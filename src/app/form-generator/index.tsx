@@ -106,7 +106,7 @@ import { generateForm } from '@/actions/generateForm';
 import { useFormState, useFormStatus } from 'react-dom';
 
 import { useSession, signIn } from "next-auth/react";
-// import { navigate } from '../actions/navigateToForm';
+import { navigate } from '../actions/navigateToForm';
 
 import { Plus } from 'lucide-react';
 // import {usePlausible} from 'next-plausible'
@@ -139,7 +139,7 @@ const FormGenerator = (props: Props) => {
   useEffect(() => {
     if (state.message === "success") {
       setOpen(false);
-    //   navigate(state.data.formId);
+      navigate(state.data.formId);
     }
 
   }, [state.message])

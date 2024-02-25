@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { saveForm } from "./mutateForm";
 
 export async function generateForm(
     prevState: {
@@ -52,8 +53,16 @@ export async function generateForm(
             }),
           });
           const json = await response.json();
+          console.log(json);
 
           const responseObj = JSON.parse(json.choices[0].message.content);
+
+          const dbFormId = await saveForm({
+            name: responseObj.name,
+            description: responseObj.description,
+            questions: responseObj.questions,
+          });
+          console.log(dbFormId);
 
         revalidatePath("/");
         return {
