@@ -11,9 +11,8 @@ const page = async (props: Props) =>{
 
     return (
     <>
-        <h1>
+        <h1 className='text-4xl font-bold px-4 m-5' >My Forms</h1>
             <FormsList forms={forms} />
-        </h1>
     </>
     )
 
